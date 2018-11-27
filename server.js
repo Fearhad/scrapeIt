@@ -24,7 +24,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 // Make public a static folder
-app.use('/public',express.static("public"));
+app.use('/Public',express.static("Public"));
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
@@ -34,7 +34,7 @@ app.get("/", function (req,res) {
 });
 
 app.get("/test", function (req,res) {
-  res.sendFile(path.join('/public/index.html'))
+  res.sendFile(path.join('/Public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

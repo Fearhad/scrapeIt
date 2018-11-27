@@ -14,7 +14,7 @@ var port = process.env.PORT || 8080;
 
 var app = express();
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_xqqz7v0d:piru5mhsonff175ib8fm4eumdk@ds041387.mlab.com:41387/heroku_xqqz7v0d";
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));

@@ -34,7 +34,7 @@ app.get("/", function (req,res) {
 });
 
 app.get("/test", function (req,res) {
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join('/public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

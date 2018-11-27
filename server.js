@@ -24,13 +24,14 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 // Make public a static folder
-app.use(express.static('public'));
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
 
-app.get("/", function (req,res) {
-  res.sendFile(path.join('index.html'))
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res) {
+  res.sendfile(__dirname + '/index.html');
 });
 
 app.get("/test", function (req,res) {

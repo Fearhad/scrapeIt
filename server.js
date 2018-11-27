@@ -29,7 +29,7 @@ app.use(express.static("public"));
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
 
-app.get("*", function (req,res) {
+app.get("/", function (req,res) {
   res.sendFile(path.join(__dirname, '/Public/index.html'))
 });
 

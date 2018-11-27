@@ -30,11 +30,11 @@ app.use(express.static('public'));
 mongoose.connect(MONGODB_URI);
 
 app.get("/", function (req,res) {
-  res.sendFile('public/index.html')
+  res.sendFile(path.join('index.html'))
 });
 
 app.get("/test", function (req,res) {
-  res.sendFile('./index.html')
+  res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

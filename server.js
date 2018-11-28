@@ -23,12 +23,12 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-// Make public a static folder
+// Make Public a static folder
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 app.get('/', function(req, res) {
   fs.readdir(path.join(__dirname), function(err, items) {
@@ -38,18 +38,18 @@ app.get('/', function(req, res) {
         console.log(items[i]);
     }
   });
-  res.sendfile(path.resolve(__dirname, '../public', 'index.html'));
+  res.sendfile(path.resolve(__dirname, 'Public', 'index.html'));
 });
 
 app.get("/test", function (req,res) {
-  fs.readdir(path.join(__dirname, '../'), function(err, items) {
+  fs.readdir(path.join(__dirname, 'Public'), function(err, items) {
     console.log(items);
   
     for (var i=0; i<items.length; i++) {
         console.log(items[i]);
     }
   });
-  res.sendFile(path.join(__dirname,'../app','public/index.html'))
+  res.sendFile(path.join(__dirname,'app','Public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

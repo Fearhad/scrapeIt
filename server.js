@@ -23,33 +23,15 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-// Make Public a static folder
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
 
+// Make Public a static folder
 app.use(express.static(path.join(__dirname, 'Public')));
 
 app.get('/', function(req, res) {
-  fs.readdir(path.join(__dirname), function(err, items) {
-    console.log(items);
-  
-    for (var i=0; i<items.length; i++) {
-        console.log(items[i]);
-    }
-  });
   res.sendfile(path.resolve(__dirname, 'Public', 'index.html'));
-});
-
-app.get("/test", function (req,res) {
-  fs.readdir(path.join(__dirname, 'Public'), function(err, items) {
-    console.log(items);
-  
-    for (var i=0; i<items.length; i++) {
-        console.log(items[i]);
-    }
-  });
-  res.sendFile(path.join(__dirname,'app','Public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

@@ -31,7 +31,7 @@ mongoose.connect(MONGODB_URI);
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', function(req, res) {
-  fs.readdir(path, function(err, items) {
+  fs.readdir(path.join(__dirname), function(err, items) {
     console.log(items);
   
     for (var i=0; i<items.length; i++) {
@@ -42,7 +42,14 @@ app.get('/', function(req, res) {
 });
 
 app.get("/test", function (req,res) {
-  res.sendFile(path.join(__dirname,'../','public/index.html'))
+  fs.readdir(path.join(__dirname, '../'), function(err, items) {
+    console.log(items);
+  
+    for (var i=0; i<items.length; i++) {
+        console.log(items[i]);
+    }
+  });
+  res.sendFile(path.join(__dirname,'../app','public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website

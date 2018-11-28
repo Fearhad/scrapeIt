@@ -28,10 +28,10 @@ app.use(express.json());
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendfile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 app.get("/test", function (req,res) {

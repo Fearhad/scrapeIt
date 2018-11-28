@@ -7,7 +7,7 @@ const path = require('path');
 // It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
-
+var fs = require('fs');
 var db = require("./models");
 
 var port = process.env.PORT || 8080;
@@ -31,11 +31,18 @@ mongoose.connect(MONGODB_URI);
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', function(req, res) {
+  fs.readdir(path, function(err, items) {
+    console.log(items);
+  
+    for (var i=0; i<items.length; i++) {
+        console.log(items[i]);
+    }
+  });
   res.sendfile(path.resolve(__dirname, '../public', 'index.html'));
 });
 
 app.get("/test", function (req,res) {
-  res.sendFile(path.join(__dirname, 'public/index.html'))
+  res.sendFile(path.join(__dirname,'../','public/index.html'))
 });
 
 // A GET route for scraping the Belleville Intelligencer website
